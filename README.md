@@ -1,4 +1,4 @@
-# node-node-google-books-search-promise
+# node-google-books-search-promise
 
 Fork of [google-books-search](https://www.npmjs.com/package/google-books-search) which makes use of promises instead of callbacks. Makes use of `util.promisify`; requires Node v8+
 
@@ -18,7 +18,7 @@ Search for books matching the specified query.
 
     const books = require('node-google-books-search-promise');
 
-    books.search('Professional JavaScript for Web Developers').then(results => {
+    books.search('Professional JavaScript for Web Developers').then(({results}) => {
         console.log(results);
     })
     .catch(e => {
@@ -29,7 +29,7 @@ Or using `await`
 
     const books = require('node-google-books-search-promise');
 
-    const results = await book.search('Professional JavaScript for Web Developers');
+    const {results} = await book.search('Professional JavaScript for Web Developers');
     console.log(results);
 
 Returns an array of JSON objects. For example;
@@ -75,7 +75,7 @@ For a description of each value; see the [Google Books API documentaion for volu
 
 Lookup books by Volume ID.
 
-    books.lookup('9KJJYFIss_wC').then(function(result) {
+    books.lookup('9KJJYFIss_wC').then(function({result}) {
         ...
     });
 
@@ -97,7 +97,7 @@ The search method optionally accepts an options object as the second argument. S
         lang: 'en'
     };
 
-    books.search("Professional JavaScript for Web Developers", options).then(function(results, apiResponse) {
+    books.search("Professional JavaScript for Web Developers", options).then(function({results, response}) {
         console.log(results);
     });
 
