@@ -1,30 +1,36 @@
-# node-google-books-search
+# node-google-books-search-promise
 
-[![Build Status](https://travis-ci.org/smilledge/node-google-books-search.svg?branch=master)](https://travis-ci.org/smilledge/node-google-books-search)
-[![npm](https://img.shields.io/npm/v/google-books-search.svg)](https://www.npmjs.com/package/google-books-search)
-[![npm](https://img.shields.io/npm/dt/google-books-search.svg)](https://www.npmjs.com/package/google-books-search)
-
-A simple Node.js client for the Google Books API.
+Fork of [google-books-search](https://www.npmjs.com/package/google-books-search) which makes use of promises instead of callbacks. Makes use of `util.promisify`; requires Node v8+
 
 ## Install
 
-    npm install --save google-books-search
+    npm install --save google-books-search-promise
+
+or yarn
+
+    yarn add google-books-search-promise
 
 ## Basic Usage
 
-### .search(query, options, callback)
+### .search(query, options)
 
 Search for books matching the specified query.
 
-    var books = require('google-books-search');
+    const books = require('google-books-search-promise');
 
-    books.search('Professional JavaScript for Web Developers', function(error, results) {
-        if ( ! error ) {
-            console.log(results);
-        } else {
-            console.log(error);
-        }
+    books.search('Professional JavaScript for Web Developers').then(results => {
+        console.log(results);
+    })
+    .catch(e => {
+        console.log(e);
     });
+
+Or using `await`
+
+    const books = require('google-books-search-promise');
+
+    const results = await book.search('Professional JavaScript for Web Developers');
+    console.log(results);
 
 Returns an array of JSON objects. For example;
 
@@ -65,11 +71,11 @@ Returns an array of JSON objects. For example;
 
 For a description of each value; see the [Google Books API documentaion for volumes](https://developers.google.com/books/docs/v1/reference/volumes).
 
-### .lookup(volumeId, options, callback)
+### .lookup(volumeId, options)
 
 Lookup books by Volume ID.
 
-    books.lookup('9KJJYFIss_wC', function(error, result) {
+    books.lookup('9KJJYFIss_wC').then(function(result) {
         ...
     });
 
@@ -79,7 +85,7 @@ The options argument accepts an object with a `key` field (your API key).
 
 The search method optionally accepts an options object as the second argument. See below for an overview of the available options.
 
-    var books = require('google-books-search');
+    var books = require('google-books-search-promise');
 
     var options = {
         key: "YOUR API KEY",
@@ -91,12 +97,8 @@ The search method optionally accepts an options object as the second argument. S
         lang: 'en'
     };
 
-    books.search("Professional JavaScript for Web Developers", options, function(error, results, apiResponse) {
-        if ( ! error ) {
-            console.log(results);
-        } else {
-            console.log(error);
-        }
+    books.search("Professional JavaScript for Web Developers", options).then(function(results, apiResponse) {
+        console.log(results);
     });
 
 ## Options
