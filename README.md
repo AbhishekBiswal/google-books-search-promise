@@ -1,14 +1,14 @@
-# node-google-books-search-promise
+# node-node-google-books-search-promise
 
 Fork of [google-books-search](https://www.npmjs.com/package/google-books-search) which makes use of promises instead of callbacks. Makes use of `util.promisify`; requires Node v8+
 
 ## Install
 
-    npm install --save google-books-search-promise
+    npm install --save node-google-books-search-promise
 
 or yarn
 
-    yarn add google-books-search-promise
+    yarn add node-google-books-search-promise
 
 ## Basic Usage
 
@@ -16,7 +16,7 @@ or yarn
 
 Search for books matching the specified query.
 
-    const books = require('google-books-search-promise');
+    const books = require('node-google-books-search-promise');
 
     books.search('Professional JavaScript for Web Developers').then(results => {
         console.log(results);
@@ -27,7 +27,7 @@ Search for books matching the specified query.
 
 Or using `await`
 
-    const books = require('google-books-search-promise');
+    const books = require('node-google-books-search-promise');
 
     const results = await book.search('Professional JavaScript for Web Developers');
     console.log(results);
@@ -85,7 +85,7 @@ The options argument accepts an object with a `key` field (your API key).
 
 The search method optionally accepts an options object as the second argument. See below for an overview of the available options.
 
-    var books = require('google-books-search-promise');
+    var books = require('node-google-books-search-promise');
 
     var options = {
         key: "YOUR API KEY",

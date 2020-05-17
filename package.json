@@ -1,5 +1,5 @@
 {
-  "name": "google-books-search-promise",
+  "name": "node-google-books-search-promise",
   "version": "0.3.1",
   "description": "Fork of google-books-search to use promise instead of callback",
   "main": "./lib/google-books-search.js",
